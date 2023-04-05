@@ -8,5 +8,5 @@
     - name: Print service status
       debug:
         msg: "{{ item.key }} is {{ item.value.state }}"
-      loop: "{{ ansible_facts.services }}"
+      with_dict: "{{ ansible_facts.services }}"
 ...
