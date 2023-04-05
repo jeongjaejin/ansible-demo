@@ -4,8 +4,9 @@
   tasks:
     - name: Gather service facts
       service_facts:
-        - name: httpd
-        - name: sshd
+        names: 
+          - httpd
+          - sshd
       register: services
 
     - name: Print service facts
