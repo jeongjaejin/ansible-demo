@@ -1,6 +1,6 @@
 ---
 - name: Check status of all services
-#  hosts: target_system
+  hosts: all
   tasks:
     - name: Gather service facts
       service_facts:
