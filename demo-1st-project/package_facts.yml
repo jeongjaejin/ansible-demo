@@ -1,3 +1,4 @@
+---
 - name: Gather package information from servers
 #  hosts: all
   gather_facts: no
@@ -10,3 +11,4 @@
     - name: Print package facts
       debug:
         var: packages
+...

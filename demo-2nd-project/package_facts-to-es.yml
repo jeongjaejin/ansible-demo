@@ -16,3 +16,4 @@
           {
             "packages": {{ ansible_facts.packages | to_nice_json }}
           }
+...
