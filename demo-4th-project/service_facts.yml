@@ -1,4 +1,5 @@
 - name: Stop and Disable service if it is running or enabled
+  hosts: all
   systemd:
     name: "{{ ansible_facts.services[serviceToDisable]['name'] }}"
     enabled: false
