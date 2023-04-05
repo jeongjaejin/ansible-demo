@@ -1,19 +1,19 @@
-#---
-#- name: Gather package information and send to ElasticSearch
-#  hosts: <target_hosts>
-#  vars:
-#    es_host: <elasticsearch_host>
-#    es_index: <elasticsearch_index>
-#  tasks:
-#    - name: Gather package facts
-#      package_facts:
-#    - name: Send package data to ElasticSearch
-#      elasticsearch:
-#        hosts: "{{ es_host }}"
-#        index: "{{ es_index }}"
-#        document_id: "{{ inventory_hostname }}"
-#        body: >
-#          {
-#            "packages": {{ ansible_facts.packages | to_nice_json }}
-#          }
-#...
+---
+- name: Gather package information and send to ElasticSearch
+  hosts: <target_hosts>
+  vars:
+    es_host: <elasticsearch_host>
+    es_index: <elasticsearch_index>
+  tasks:
+    - name: Gather package facts
+      package_facts:
+    - name: Send package data to ElasticSearch
+      elasticsearch:
+        hosts: "{{ es_host }}"
+        index: "{{ es_index }}"
+        document_id: "{{ inventory_hostname }}"
+        body: >
+          {
+            "packages": {{ ansible_facts.packages | to_nice_json }}
+          }
+...
