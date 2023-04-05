@@ -1,15 +1,15 @@
----
-- name: Gather service facts
+- name: gather service facts
   hosts: all
   tasks:
-    - name: Gather service facts
-      service_facts:
-        names: 
-          - httpd
-          - sshd
+    - name: gather service facts
+      systemd:
+        state: facts
+        name: "{{ item }}"
+      loop:
+        - httpd
+        - sshd
       register: services
 
     - name: Print service facts
       debug:
         var: services
-...
