@@ -1,0 +1,21 @@
+- name: Get certificate expiration date
+  hosts: localhost
+  gather_facts: no
+
+  vars:
+    cert_path: "/home/vagrant/cert/always.com.crt"
+
+  tasks:
+    - name: Retrieve certificate info
+      community.crypto.x509_certificate_info:
+        path: "{{ cert_path }}"
+        # for valid_at, invalid_at and valid_in
+        valid_at:
+          one_day_ten_hours: "+1d10h"
+          fixed_timestamp: 20200331202428Z
+          ten_seconds: "+10"
+      register: cert_info
+
+    - name: Print certificate expiration date
+      debug:
+        var: cert_info.not_after
