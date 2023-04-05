@@ -1,15 +1,16 @@
-- name: gather service facts
-  hosts: all
-  tasks:
-    - name: gather service facts
-      systemd:
-        state: facts
-        name: "{{ item }}"
-      loop:
-        - httpd
-        - sshd
-      register: services
-
-    - name: Print service facts
-      debug:
-        var: services
+  - name: Stop and Disable service if it is running or enabled
+    systemd:
+      name: "{{ ansible_facts.services[serviceToDisable]['name'] }}"
+      enabled: false
+      state: stopped
+    when:
+      - serviceToDisable is defined
+      - ansible_facts.services[serviceToDisable]['status'] == 'enabled'
+    loop: "{{ disable_services }}"
+    loop_control:
+      loop_var: serviceToDisable
+    vars:
+      disable_services:
+        - nginx.service
+        - nginx
+    become: true
