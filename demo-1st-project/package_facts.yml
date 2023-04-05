@@ -6,9 +6,9 @@
     - name: Get package information
       package_facts:
         manager: auto
-      register: packages
-      
-    - name: Print package facts
-      debug:
-        var: packages
+#      register: packages
+#      
+#    - name: Print package facts
+#      debug:
+#        var: packages
 ...
