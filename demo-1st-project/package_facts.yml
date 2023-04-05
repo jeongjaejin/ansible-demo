@@ -1,23 +1,14 @@
-#---
-#- name: Gather package information from servers
-##  hosts: all
-##  gather_facts: no
-#  tasks:
-#    - name: Get package information
-#      package_facts:
-#        manager: auto
-##      register: packages
-##      
-##    - name: Print package facts
-##      debug:
-##        var: packages
-#...
-
 ---
-- name: Hello World Sample
+- name: Gather package information from servers
   hosts: all
+  gather_facts: no
   tasks:
-    - name: Hello Message
+    - name: Get package information
+      package_facts:
+        manager: auto
+      register: packages
+      
+    - name: Print package facts
       debug:
-        msg: "Hello World!"
+        var: packages
 ...
