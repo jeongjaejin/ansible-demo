@@ -1,0 +1,10 @@
+- name: Check status of all services
+#  hosts: target_system
+  tasks:
+    - name: Gather service facts
+      service_facts:
+
+    - name: Print service status
+      debug:
+        msg: "{{ item.key }} is {{ item.value.state }}"
+      loop: "{{ ansible_facts.services }}"

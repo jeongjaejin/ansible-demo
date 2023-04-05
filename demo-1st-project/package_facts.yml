@@ -1,0 +1,12 @@
+- name: Gather service facts
+  hosts: web_servers
+  tasks:
+    - name: Gather service facts
+      service_facts:
+        - name: httpd
+        - name: sshd
+      register: services
+
+    - name: Print service facts
+      debug:
+        var: services
