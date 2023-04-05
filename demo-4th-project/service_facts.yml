@@ -1,16 +1,16 @@
-  - name: Stop and Disable service if it is running or enabled
-    systemd:
-      name: "{{ ansible_facts.services[serviceToDisable]['name'] }}"
-      enabled: false
-      state: stopped
-    when:
-      - serviceToDisable is defined
-      - ansible_facts.services[serviceToDisable]['status'] == 'enabled'
-    loop: "{{ disable_services }}"
-    loop_control:
-      loop_var: serviceToDisable
-    vars:
-      disable_services:
-        - nginx.service
-        - nginx
-    become: true
+- name: Stop and Disable service if it is running or enabled
+  systemd:
+    name: "{{ ansible_facts.services[serviceToDisable]['name'] }}"
+    enabled: false
+    state: stopped
+  when:
+    - serviceToDisable is defined
+    - ansible_facts.services[serviceToDisable]['status'] == 'enabled'
+  loop: "{{ disable_services }}"
+  loop_control:
+    loop_var: serviceToDisable
+  vars:
+    disable_services:
+      - nginx.service
+      - nginx
+  become: true
