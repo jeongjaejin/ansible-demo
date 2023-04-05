@@ -1,6 +1,6 @@
 ---
 - name: Gather service facts
-#  hosts: web_servers
+  hosts: all
   tasks:
     - name: Gather service facts
       service_facts:
