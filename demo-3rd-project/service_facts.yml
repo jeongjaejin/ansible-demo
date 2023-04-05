@@ -1,19 +1,12 @@
-#- name: Gather package facts
-#  hosts: all
-#  tasks:
-#    - name: Gather package facts
-#      ansible.builtin.package_facts:
-#        manager: "{{ ansible_pkg_mgr }}"
-#
-#    - name: Print package facts
-#      debug:
-#        var: ansible_facts.packages
-
----
-- name: Gather package information from servers
-  hosts: all
-  gather_facts: yes
+- name: Gather service facts
+  hosts: web_servers
   tasks:
-    - name: Get package information
-      package_facts:
-        manager: auto
+    - name: Gather service facts
+      service_facts:
+        - name: httpd
+        - name: sshd
+      register: services
+
+    - name: Print service facts
+      debug:
+        var: services

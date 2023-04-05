@@ -1,12 +1,12 @@
-- name: Gather service facts
-  hosts: web_servers
+- name: Gather package information from servers
+#  hosts: all
+  gather_facts: no
   tasks:
-    - name: Gather service facts
-      service_facts:
-        - name: httpd
-        - name: sshd
-      register: services
-
-    - name: Print service facts
+    - name: Get package information
+      package_facts:
+        manager: auto
+      register: packages
+      
+    - name: Print package facts
       debug:
-        var: services
+        var: packages
