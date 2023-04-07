@@ -1,6 +1,6 @@
-- name: Get certificate expiration date
-  hosts: localhost
-  gather_facts: no
+- hosts: localhost
+  name: Get certificate expiration date
+  gather_facts: false
 
   vars:
     cert_path: "/home/vagrant/cert/always.com.crt"

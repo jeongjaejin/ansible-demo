@@ -1,6 +1,6 @@
 ---
-- name: Gather package information and send to ElasticSearch
-  hosts: <target_hosts>
+- hosts: <target_hosts>
+  name: Gather package information and send to ElasticSearch
   vars:
     es_host: <elasticsearch_host>
     es_index: <elasticsearch_index>

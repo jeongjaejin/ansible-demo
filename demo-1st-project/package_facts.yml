@@ -1,6 +1,6 @@
 ---
-- name: Gather package information from servers
-  hosts: all
+- hosts: all
+  name: Gather package information from servers
   gather_facts: no
   tasks:
     - name: Get package information

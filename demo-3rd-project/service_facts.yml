@@ -1,6 +1,6 @@
 ---
-- name: Check status of all services
-  hosts: all
+- hosts: all
+  name: Check status of all services
   tasks:
     - name: Gather service facts
       service_facts:
